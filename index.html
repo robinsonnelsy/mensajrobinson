@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+    #idpmsn{
+        position: absolute;
+        top: 38%;
+        left: 5%;
+        width: 100%;
+        color: rgb(255, 255, 255);
+        background-color: black;
+        font-size: 17px;
+
+    }
+    
+
+
+
+    #idpmsnfire{
+
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        width: 80%;
+        height:60px;
+        background-color: rgb(0, 0, 0);
+        color: aliceblue;
+font-size: 18px;
+    }
+    </style>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script>
+    var msnfire;
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCAurJpGFpim_P2s1JMK3mU-hL1GoN76fA",
+    authDomain: "hermanorobin-9767e.firebaseapp.com",
+    databaseURL: "https://hermanorobin-9767e.firebaseio.com",
+    projectId: "hermanorobin-9767e",
+    storageBucket: "hermanorobin-9767e.appspot.com",
+    messagingSenderId: "25162325991"
+  };
+  firebase.initializeApp(config);
+
+
+
+
+  var vllamar=false;
+
+  var telefonos;
+var unicmensaje="";
+
+
+
+
+
+firebase.database().ref().child("smscandidato1").on('value', function(snapshot) {
+
+    unicmensaje=snapshot.val();
+    msnfire=snapshot.val();;
+    escriidpmsnfiree(unicmensaje);
+
+
+    firebase.database().ref().child("telefonos").once('value', function(snapshot) {
+
+ telefonos=snapshot.val();
+
+ escriidpmsnfiree(unicmensaje);
+         enviar();
+ 
+ });
+
+
+});
+
+
+
+
+
+
+
+
+</script>
+
+</head>
+<body>
+<h2>Robinson </h2>
+    <button id="bttraejson" >Get JSON data</button>
+    <button id="btenviamensaje" onclick="enviar();" >enviar mensaje</button>
+
+<div></div>
+<p id="idpmsn">primer sms</p>
+<p id="idpmsnfire">colombia</p>
+</body>
+<script>
+
+
+
+
+function escriidpmsnfiree(st){
+document.getElementById("idpmsnfire").innerHTML="el msn: >  "+st;
+
+}
+
+
+
+
+
+
+
+    var eljs="";
+
+
+var tstxmsn="";
+var telnum="";
+
+    function showAndroidToast(toast) {
+        Android.showToast("",tstxmsn,telnum);
+    }
+var  vw =window.innerWidth;
+    function enviar(){
+
+
+
+for(var i in telefonos)
+
+
+
+
+ 
+ Android.showToast("enviarmsnya",msnfire,telefonos[i]);
+
+
+
+contandophone=contandophone+1;
+
+ 
+
+
+
+
+document.getElementById("idpmsn").innerHTML="se enviaron "+contandophone+" mensajes";
+
+      
+    }
+var idx=0;
+var stacu="";
+var contandophone=0;
+
+    </script>
+
+
+</html>
